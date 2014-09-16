@@ -29,6 +29,9 @@
                 left: -50px;
                 box-shadow: -5px 5px 20px rgba(0,0,0,.4);
             }
+            .videContainer:not(.screenshare) video {
+                width: 200px;
+            }
             .volume_bar {
                 position: absolute;
                 width: 5px;
@@ -158,7 +161,6 @@
                     d.id = 'container_' + webrtc.getDomId(peer);
                     d.appendChild(video);
                     if (!isScreen) {
-                        video.style.width = '200px';
                         var vol = document.createElement('div');
                         vol.id = 'volume_' + peer.id;
                         vol.className = 'volume_bar';
