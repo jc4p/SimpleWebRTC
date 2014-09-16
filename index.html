@@ -38,7 +38,7 @@
                 background-color: #12acef;
             }
             #remotes {
-                padding: 50px;
+                padding: 20px;
                 white-space: nowrap;
             }
             .mainContainer {
@@ -158,6 +158,7 @@
                     d.id = 'container_' + webrtc.getDomId(peer);
                     d.appendChild(video);
                     if (!isScreen) {
+                        d.style.width = '200px';
                         var vol = document.createElement('div');
                         vol.id = 'volume_' + peer.id;
                         vol.className = 'volume_bar';
