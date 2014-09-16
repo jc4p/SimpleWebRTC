@@ -117,8 +117,8 @@
                 debug: false,
                 detectSpeakingEvents: true,
                 autoAdjustMic: false,
-                media: canPresent ? {'video': false, 'audio': true} : {'video': false, 'audio': true},
-                localVideo: { autoplay: true, mirro: false, muted: true }
+                media: canPresent ? {'video': true, 'audio': true} : {'video': false, 'audio': true},
+                localVideo: { autoplay: true, mirror: false, muted: true }
             });
 
             if (canPresent) {
