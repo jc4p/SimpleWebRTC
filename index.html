@@ -6,17 +6,28 @@
     </head>
     <body>
         <style>
-            .videoContainer {
-                position: relative;
-                width: 200px;
-                height: 150px;
-                float: left;
-                margin-right: 15px;
+            body {
+                background: #e0e0e0;;
             }
-            .videoContainer video {
-                position: absolute;
-                width: 100%;
-                height: 100%;
+            .videoContainer {
+                float: none!important;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .videoContainer.screenshare {
+                width: calc(100% - 200px);
+                height: auto;
+            }
+            .videoContainer.screenshare video {
+                position: relative;
+                max-height: calc(100vh - 140px);
+                object-position: right;
+            }
+            .videoContainer:not(.screenshare) {
+                position: relative!important;
+                top: 50px;
+                left: -50px;
+                box-shadow: -5px 5px 20px rgba(0,0,0,.4);
             }
             .volume_bar {
                 position: absolute;
@@ -25,6 +36,10 @@
                 right: 0px;
                 bottom: 0px;
                 background-color: #12acef;
+            }
+            #remotes {
+                padding: 50px;
+                white-space: nowrap;
             }
             .mainContainer {
                 margin-right: 200px;
@@ -147,21 +162,17 @@
                         vol.id = 'volume_' + peer.id;
                         vol.className = 'volume_bar';
                         d.appendChild(vol);
-
-                        d.style.position = 'absolute';
-                        d.style.top = '100px';
-                        d.style.right = '200px';
+                        remotes.appendChild(d);
                     }
                     else {
-                        video.onclick = function () {
-                            video.style.width = video.videoWidth + 'px';
-                            video.style.height = video.videoHeight + 'px';
-                        };
-                        window.setTimeout(function() {
-                            video.click();
-                        }, 3000);
+                        d.className += ' screenshare';
+                        if (remotes.children) {
+                            remotes.insertBefore(d, remotes.children[0]);
+                        }
+                        else {
+                            remotes.appendChild(d);
+                        }
                     }
-                    remotes.appendChild(d);
                 }
             });
 
