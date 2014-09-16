@@ -31,7 +31,6 @@ function SimpleWebRTC(opts) {
                 mirror: true,
                 muted: true
             },
-            isViewer: true
         };
     var item, connection;
 
@@ -86,7 +85,6 @@ function SimpleWebRTC(opts) {
                     enableDataChannels: self.config.enableDataChannels && message.roomType !== 'screen',
                     sharemyscreen: message.roomType === 'screen' && !message.broadcaster,
                     broadcaster: message.roomType === 'screen' && !message.broadcaster ? self.connection.socket.sessionid : null,
-                    oneway: self.config.isViewer
                 });
             }
             peer.handleMessage(message);

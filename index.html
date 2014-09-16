@@ -119,8 +119,6 @@
                 autoAdjustMic: false,
                 media: canPresent ? {'video': true, 'audio': true} : {'video': false, 'audio': true},
                 localVideo: { autoplay: true, mirror: false, muted: true },
-                isViewer: !canPresent,
-                peerConnectionConfig: {} // to kill the STUN server
             });
 
             if (canPresent) {
